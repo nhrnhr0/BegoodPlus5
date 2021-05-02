@@ -14,10 +14,11 @@ project/client/dest/static - minified and bundled css and js file created by gru
 
 
 on setup:
+npm install -g grunt-cli
 npm install
 python3 -m venv env
 env/scripts/activate
-pip install -r requierment
+pip install -r requierments.txt
 
 
 when develop run:

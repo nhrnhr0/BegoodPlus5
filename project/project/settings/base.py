@@ -4,6 +4,7 @@ from .. import secrects
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', secrects.DJANGO_SETTINGS_MODULE)
 
 SECRET_KEY = secrects.SECRET_KEY
 
@@ -31,6 +32,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # libs:
+    'adminsortable2',
+    
+    # own:
+    'catalog',
 ]
 
 MIDDLEWARE = [

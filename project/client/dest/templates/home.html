@@ -1,1 +1,6 @@
-{% extends "base.html" %} {% block content %}<div>Hello from home</div>{%endblock%}
+{% extends "base.html" %} {%load static%} {% block extra_head %}<link rel="stylesheet" href="{%static 'css/home.min.css' %}"><style>.bg-wraper {
+        background: url({%static 'imgs/base/imgs/wall_bg.jpg'%});
+        background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.15)), to(rgba(0, 0, 0, 0.15))), url({%static 'imgs/base/imgs/wall_bg.jpg'%});
+        background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url({%static 'imgs/base/imgs/wall_bg.jpg'%});
+        background-position: center;
+    }</style>{% endblock %} {% block content %}<div class="bg-wraper"><div class="header"><div class="content">• עיינו באתר • הוסיפו לעגלה • שלחו אלינו •</div></div></div>{%endblock%}

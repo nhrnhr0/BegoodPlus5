@@ -41,6 +41,8 @@ module.exports = function (grunt) {
                     //report: 'gzip',
                     src: ['build/static/js/*.js', '!build/static/js/*.min.js'],
                     dest: 'project/client/dest/static/js/',
+                    compress: false,
+                    beautify: true,
                     //ext: '.min.js',
 
                     rename: function (dest, src) {
@@ -116,8 +118,27 @@ module.exports = function (grunt) {
         },
         
         
+        imagemin: {
+            dest: {
+                files: [{
+                    expand: true,
+                    cwd: 'project/client/src/',
+                    src: ['**/*.{png,jpg,gif,svg}'],
+                    dest: 'project/client/dest/static/imgs'
+                }]
+            },
+        },
+        
+        
         
         watch: {
+            imgs: {
+                files: 'project/client/src/**/*.{png,jpg,gif,svg}',
+                tasks: ['imagemin'],
+                options: {
+                    interrupt: true,
+                  },
+            },
             js: {
               files: 'project/client/src/**/*.js',
               tasks: ['browserify', 'uglify'],
@@ -150,6 +171,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
 
 
     grunt.registerTask('default', [
@@ -158,5 +180,6 @@ module.exports = function (grunt) {
         'sass',
         'cssmin',
         'htmlmin',
+        'imagemin',
     ]);
 }
