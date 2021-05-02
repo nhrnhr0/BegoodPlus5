@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'adminsortable2',
     
     # own:
+    'core',
     'catalog',
 ]
 
