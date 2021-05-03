@@ -1,22 +1,92 @@
 {% extends "base.html" %}
 {%load static%}
 {% block extra_head %}
-<link rel="stylesheet" href="{%static 'css/home.min.css' %}"></noscript>
-    <style>
+
+<link rel="preload" href="{%static 'css/home.min.css' %}" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{%static 'css/home.min.css' %}"></noscript>
+        
+        
+<style>
     .bg-wraper {
-        background: url({%static 'imgs/base/imgs/wall_bg.jpg'%});
-        background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.15)), to(rgba(0, 0, 0, 0.15))), url({%static 'imgs/base/imgs/wall_bg.jpg'%});
-        background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url({%static 'imgs/base/imgs/wall_bg.jpg'%});
-        background-position: center;
+        background: url({%static 'imgs/home/imgs/catalogBg1.jpeg'%});
     }
-    </style>
+    
+</style>
 {% endblock %}
 {% block content %}
     <div class="bg-wraper">
-        <div class="header">
-        <div class="content">
-            • עיינו באתר • הוסיפו לעגלה • שלחו אלינו •
+        <div class="hero">
+            <div class="content">
+            <h1 class="part-1">כבר שילמתם על לוגו...</h1>
+            <h1 class="part-2">לא חבל שהעולם לא רואה אותו?!</h1>
+            <h2>
+            למעלה מ73% מהעסקים בישראל
+            <span class="mark-strong">מפסידים</span>
+            כסף בהוצאות ה
+            <span class="mark-strong">שיווק והפרסום</span>
+            לעסק בכל חודש...
+            </h2>
+            <h2 class="part-3">אנחנו כאן לעשות לכם סדר</h2>
+            <h1 class="part-4">
+                אצלנו באמ אס גלובל תמצאו מגוון רחב של אפשרויות שיווק מיתוג וקידום לעסק שלכם.
+            </h1>
         </div>
+            <div class="waves-wraper">
+            <div class="waves-container">
+                
+            </div>
+        </div>
+        </div>
+        <div class="main">
+            <div class="waves-wraper">
+                <div class="waves-container">
+                </div>
+            </div>
+            
+            <h1 class="title">למה אתם מחכים? בחרו באפשרות המתאימה עבורכם</h1>
+            
+            <div class="container">
+                <div class="slide slide-1">
+                    <h4 class="title">קטלוג מוצרי פרסום</h4>
+                    <img class="slide-img" width="413" height="320" src="{%static 'imgs/home/imgs/caruselImg3.jpg' %}" alt="" srcset="">
+                    <button class="btn-success">למעבר לקטלוג מוצרי פרסום לחץ כאן</button>
+                </div>
+                <div class="slide slide-2">
+                    <h4 class="title">קטלוג מוצרים</h4>
+                    <img class="slide-img" width="413" height="320" src="{%static 'imgs/home/imgs/caruselImg1.jpg' %}" alt="" srcset="">
+                    <button class="btn-success">למעבר לקטלוג מוצרים לחץ כאן</button>
+                </div>
+            </div>
+            <div class="about-us-wraper">
+            <div class="about-us gold-animation">
+                <h1>אמ אס גלובל</h1>
+                מתמחה באספקת בגדי עבודה, מוצרי טקסטיל ואביזרי מיתוג למוסדות ולחנויות.
+                <br>
+                אפשרויות הדפסה ורקמה על מגוון מוצרים. שירותי גרפיקה מתקדמים.
+                <br>
+                מחלקת הייטק המספקת שירותי בניית אתרים, הקמת תוכנה ושיווק אינטרנטי יעיל לבעלי העסקים.
+            </div>
+        </div>
+        
+        
+        <div class="swiper-container mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide1.png'%}" alt="" srcset=""></div>
+              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide2.png'%}" alt="" srcset=""></div>
+              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide3.png'%}" alt="" srcset=""></div>
+              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide4.png'%}" alt="" srcset=""></div>
+              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide5.png'%}" alt="" srcset=""></div>
+              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide6.png'%}" alt="" srcset=""></div>
+            </div>
+          </div>
+          
+          
         </div>
     </div>
+{%endblock%}
+
+{%block extra_body%}
+    <script src="{%static 'js/home.build.min.js'%}" async></script>
 {%endblock%}

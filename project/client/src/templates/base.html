@@ -7,6 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M.S. Global {% block head_title %}{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+    rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </noscript>
 
     <link rel="preload" href="{%static 'css/base.min.css' %}" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
@@ -28,7 +42,7 @@
         <div class="nav-item">
             <div id="menu" class="menu">
                 <button name="menu-btn" type="button" class="collapsible">
-                    <img src="{%static 'imgs/base/imgs/icons8-menu.svg' %}" height="40" width="auto" alt="" srcset="">
+                    <img src="{%static 'imgs/base/imgs/icons8-menu.svg' %}" height="40" width="40" alt="menu" srcset="">
                 </button>
                 <div class="content">
                     <ul>
@@ -44,7 +58,7 @@
                         </li>
                         <li>
                             <a href="/catalog">
-                                <img src="{%static 'imgs/base/imgs/my_logo_logo.jpg' %}" height="40" width="99"  alt="" srcset="">
+                                <img src="{%static 'imgs/base/imgs/my_logo_logo.jpg' %}" height="58" width="262"  alt="" srcset="">
                             </a>
                         </li>
                         <li>
@@ -72,6 +86,9 @@
         </div>
     </div>
     {%block content %} {%endblock content%}
+
+    <script src="{%static 'js/commonjs.build.min.js' %}" async></script>
+
     <script src="{%static 'js/base.build.min.js' %}" async></script>
 
 

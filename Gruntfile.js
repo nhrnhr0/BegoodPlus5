@@ -3,6 +3,10 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        concat: {
+                'project/client/build/static/js/commonjs.build.js':['project/client/src/commonjs/**/*.js',],
+            
+        },
         browserify: {
             dist: {
                 files: [{
@@ -119,11 +123,15 @@ module.exports = function (grunt) {
         
         
         imagemin: {
+            options: {
+                optimizationLevel: 7,
+                svgoPlugins: [{removeViewBox: false}],
+            },
             dest: {
                 files: [{
                     expand: true,
                     cwd: 'project/client/src/',
-                    src: ['**/*.{png,jpg,gif,svg}'],
+                    src: ['**/*.{png,jpg,gif,svg,jpeg}'],
                     dest: 'project/client/dest/static/imgs'
                 }]
             },
@@ -133,7 +141,7 @@ module.exports = function (grunt) {
         
         watch: {
             imgs: {
-                files: 'project/client/src/**/*.{png,jpg,gif,svg}',
+                files: 'project/client/src/**/*.{png,jpg,gif,svg,jpeg}',
                 tasks: ['imagemin'],
                 options: {
                     interrupt: true,
@@ -141,7 +149,7 @@ module.exports = function (grunt) {
             },
             js: {
               files: 'project/client/src/**/*.js',
-              tasks: ['browserify', 'uglify'],
+              tasks: [ 'browserify', 'concat', 'uglify',],//
               options: {
                 interrupt: true,
               },
@@ -162,6 +170,7 @@ module.exports = function (grunt) {
                   interrupt: true,
                 },
             },
+            
           },
 
 
@@ -172,9 +181,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks('grunt-contrib-imagemin');
-
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.registerTask('default', [
+        'concat',
         'browserify:dist',
         'uglify',
         'sass',

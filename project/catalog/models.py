@@ -1,18 +1,32 @@
 from django.db import models
 from django.utils.translation import gettext_lazy  as _
+from colorfield.fields import ColorField
 
 # Create your models here.
 
 
+class Color(models.Model):
+    name = models.CharField(max_length=30, verbose_name=_('color name'), unique=True)
+    color = ColorField(verbose_name=_('color'), default='#FF0000')
+    def __str__(self):
+        return self.name
+
+class ProductSize(models.Model):
+    size = models.CharField(_('size'), default='X', max_length=30, unique=True)
+    code = models.CharField(_('code'), default=0, max_length=2)
+    class Meta():
+        ordering = ('code',)
+    def __str__(self):
+        return self.size + ' (' + self.code + ')'
 
 
 class CatalogImage(models.Model):
     title = models.CharField(max_length=120, verbose_name=_("title"), unique=False)
     description = models.TextField(verbose_name=_("description"))
     
-    image = models.ImageField(verbose_name=_("image"))
-    #colors = models.ManyToManyField(to=Color)
-    #sizes = models.ManyToManyField(to=ProductSize)
+    image = models.ImageField(verbose_name=_("image"), upload_to='CatalogImage')
+    colors = models.ManyToManyField(to=Color)
+    sizes = models.ManyToManyField(to=ProductSize)
     
     NO_DISCOUNT = ''
     DISCOUNT_10_PRES = '/static/assets/catalog/imgs/discount_10.gif'
@@ -20,6 +34,7 @@ class CatalogImage(models.Model):
     my_order = models.PositiveIntegerField(default=0, blank=False, null=False)
     class Meta(object):
         ordering= ['my_order',]
+        pass
 
 
     DISCOUNT_TYPES = [

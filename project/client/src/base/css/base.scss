@@ -1,11 +1,17 @@
 
 
 @import 'partial/mixins';
+@import 'swiper-bundle';
 
 body {
     direction: rtl;
     padding:0px;
     margin: 0px;
+}
+* {
+    //font-family: 'Rounded Mplus 1c';
+    font-family: 'Rubik';
+    font-style: normal;
 }
 
 @mixin ms-global-gredient {

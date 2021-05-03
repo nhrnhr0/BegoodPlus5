@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     
     # libs:
     'adminsortable2',
+    'colorfield',
     
     # own:
     'core',

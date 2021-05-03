@@ -2,6 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import CatalogAlbum, CatalogImage
+
 from adminsortable2.admin import SortableAdminMixin
 from adminsortable2.admin import SortableInlineAdminMixin
 
