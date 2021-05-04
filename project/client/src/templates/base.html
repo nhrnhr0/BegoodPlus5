@@ -86,12 +86,26 @@
         </div>
     </div>
     {%block content %} {%endblock content%}
+    
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
 
-    <script src="{%static 'js/commonjs.build.min.js' %}" async></script>
+            </div>
+        </div>
 
-    <script src="{%static 'js/base.build.min.js' %}" async></script>
+        <div class="container">
+            <div class="copyright">
+                © Copyright <strong>M.S. Global</strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by <a href="https://ms-global.co.il/">M.S. Global</a>
+            </div>
+        </div>
+    </footer>
+    
 
-
+    <script src="{%static 'js/base/base_bundle.min.js' %}" defer></script>
     {% block extra_body %}
     {% endblock %}
 </body>

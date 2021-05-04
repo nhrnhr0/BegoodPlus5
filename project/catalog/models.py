@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy  as _
 from colorfield.fields import ColorField
-
+from imagekit.models import ProcessedImageField, ImageSpecField
+from imagekit.processors import Thumbnail, SmartResize, ResizeToFill
 # Create your models here.
 
 
@@ -19,12 +20,43 @@ class ProductSize(models.Model):
     def __str__(self):
         return self.size + ' (' + self.code + ')'
 
-
+#a.image.save('temp2.png', File(open(r'C:/Users/ronio/Downloads/trans_images/temp9.png','rb',encoding="utf16")))
 class CatalogImage(models.Model):
     title = models.CharField(max_length=120, verbose_name=_("title"), unique=False)
     description = models.TextField(verbose_name=_("description"))
     
     image = models.ImageField(verbose_name=_("image"), upload_to='CatalogImage')
+    image_100 = ImageSpecField(source='image', processors=[SmartResize(100,100)],format='png', options={'quality': 0})
+    image_200 = ImageSpecField(source='image', processors=[SmartResize(200,200)],format='png', options={'quality': 0})
+    image_300 = ImageSpecField(source='image', processors=[SmartResize(300,300)],format='png', options={'quality': 0})
+    image_400 = ImageSpecField(source='image', processors=[SmartResize(400,400)],format='png', options={'quality': 0})
+    image_500 = ImageSpecField(source='image', processors=[SmartResize(500,500)],format='png', options={'quality': 0})
+    image_600 = ImageSpecField(source='image', processors=[SmartResize(600,600)],format='png', options={'quality': 0})
+    image_700 = ImageSpecField(source='image', processors=[SmartResize(700,700)],format='png', options={'quality': 0})
+    image_800 = ImageSpecField(source='image', processors=[SmartResize(800,800)],format='png', options={'quality': 0})
+    image_900 = ImageSpecField(source='image', processors=[SmartResize(900,900)],format='png', options={'quality': 0})
+    image_1000 = ImageSpecField(source='image', processors=[SmartResize(1000,1000)],format='png', options={'quality': 0})
+    image_1100 = ImageSpecField(source='image', processors=[SmartResize(1100,1100)],format='png', options={'quality': 0})
+    image_1200 = ImageSpecField(source='image', processors=[SmartResize(1200,1200)],format='png', options={'quality': 0})
+    image_1300 = ImageSpecField(source='image', processors=[SmartResize(1300,1300)],format='png', options={'quality': 0})
+    
+    image_150 = ImageSpecField(source='image', processors=[SmartResize(150,150)],format='png', options={'quality': 0})
+    image_250 = ImageSpecField(source='image', processors=[SmartResize(250,250)],format='png', options={'quality': 0})
+    image_350 = ImageSpecField(source='image', processors=[SmartResize(350,350)],format='png', options={'quality': 0})
+    image_450 = ImageSpecField(source='image', processors=[SmartResize(450,450)],format='png', options={'quality': 0})
+    image_550 = ImageSpecField(source='image', processors=[SmartResize(550,550)],format='png', options={'quality': 0})
+    image_650 = ImageSpecField(source='image', processors=[SmartResize(650,650)],format='png', options={'quality': 0})
+    image_750 = ImageSpecField(source='image', processors=[SmartResize(750,750)],format='png', options={'quality': 0})
+    image_850 = ImageSpecField(source='image', processors=[SmartResize(850,850)],format='png', options={'quality': 0})
+    image_950 = ImageSpecField(source='image', processors=[SmartResize(950,950)],format='png', options={'quality': 0})
+    
+    image_69 = ImageSpecField(source='image', processors=[SmartResize(69,69)],format='png', options={'quality': 0})
+
+    
+    
+    
+    
+
     colors = models.ManyToManyField(to=Color)
     sizes = models.ManyToManyField(to=ProductSize)
     
@@ -62,7 +94,9 @@ class CatalogAlbum(models.Model):
     
     class Meta(object):
         ordering = ['my_order',]
-        
+    @property
+    def sorted_image_set(self):
+        return self.images.order_by('albumimagethrough__my_order')
     def __str__(self):
         return self.title
     

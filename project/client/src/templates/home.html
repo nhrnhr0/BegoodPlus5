@@ -2,64 +2,64 @@
 {%load static%}
 {% block extra_head %}
 
-<link rel="preload" href="{%static 'css/home.min.css' %}" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="{%static 'css/home.min.css' %}"></noscript>
-        
-        
+<link rel="preload" href="{%static 'css/home.min.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+    <link rel="stylesheet" href="{%static 'css/home.min.css' %}"></noscript>
+
+
 <style>
     .bg-wraper {
         background: url({%static 'imgs/home/imgs/catalogBg1.jpeg'%});
     }
-    
 </style>
 {% endblock %}
 {% block content %}
-    <div class="bg-wraper">
-        <div class="hero">
-            <div class="content">
+<div class="bg-wraper">
+    <div class="hero">
+        <div class="content">
             <h1 class="part-1">כבר שילמתם על לוגו...</h1>
             <h1 class="part-2">לא חבל שהעולם לא רואה אותו?!</h1>
             <h2>
-            למעלה מ73% מהעסקים בישראל
-            <span class="mark-strong">מפסידים</span>
-            כסף בהוצאות ה
-            <span class="mark-strong">שיווק והפרסום</span>
-            לעסק בכל חודש...
+                למעלה מ73% מהעסקים בישראל
+                <span class="mark-strong">מפסידים</span>
+                כסף בהוצאות ה
+                <span class="mark-strong">שיווק והפרסום</span>
+                לעסק בכל חודש...
             </h2>
             <h2 class="part-3">אנחנו כאן לעשות לכם סדר</h2>
             <h1 class="part-4">
                 אצלנו באמ אס גלובל תמצאו מגוון רחב של אפשרויות שיווק מיתוג וקידום לעסק שלכם.
             </h1>
         </div>
-            <div class="waves-wraper">
+        <div class="waves-wraper">
             <div class="waves-container">
-                
+
             </div>
         </div>
+    </div>
+    <div class="main">
+        <div class="waves-wraper">
+            <div class="waves-container">
+            </div>
         </div>
-        <div class="main">
-            <div class="waves-wraper">
-                <div class="waves-container">
-                </div>
+
+        <h1 class="title">למה אתם מחכים? בחרו באפשרות המתאימה עבורכם</h1>
+
+        <div class="container">
+            <div class="slide slide-1">
+                <h4 class="title">קטלוג מוצרי פרסום</h4>
+                <img class="slide-img" width="413" height="320" src="{%static 'imgs/home/imgs/caruselImg3.jpg' %}"
+                    alt="" srcset="">
+                <button class="btn-success">למעבר לקטלוג מוצרי פרסום לחץ כאן</button>
             </div>
-            
-            <h1 class="title">למה אתם מחכים? בחרו באפשרות המתאימה עבורכם</h1>
-            
-            <div class="container">
-                <div class="slide slide-1">
-                    <h4 class="title">קטלוג מוצרי פרסום</h4>
-                    <img class="slide-img" width="413" height="320" src="{%static 'imgs/home/imgs/caruselImg3.jpg' %}" alt="" srcset="">
-                    <button class="btn-success">למעבר לקטלוג מוצרי פרסום לחץ כאן</button>
-                </div>
-                <div class="slide slide-2">
-                    <h4 class="title">קטלוג מוצרים</h4>
-                    <img class="slide-img" width="413" height="320" src="{%static 'imgs/home/imgs/caruselImg1.jpg' %}" alt="" srcset="">
-                    <button class="btn-success">למעבר לקטלוג מוצרים לחץ כאן</button>
-                </div>
+            <div class="slide slide-2">
+                <h4 class="title">קטלוג מוצרים</h4>
+                <img class="slide-img" width="413" height="320" src="{%static 'imgs/home/imgs/caruselImg1.jpg' %}"
+                    alt="" srcset="">
+                <button class="btn-success">למעבר לקטלוג מוצרים לחץ כאן</button>
             </div>
-            <div class="about-us-wraper">
+        </div>
+        <div class="about-us-wraper">
             <div class="about-us gold-animation">
                 <h1>אמ אס גלובל</h1>
                 מתמחה באספקת בגדי עבודה, מוצרי טקסטיל ואביזרי מיתוג למוסדות ולחנויות.
@@ -69,24 +69,62 @@
                 מחלקת הייטק המספקת שירותי בניית אתרים, הקמת תוכנה ושיווק אינטרנטי יעיל לבעלי העסקים.
             </div>
         </div>
-        
-        
+
+
         <div class="swiper-container mySwiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide1.png'%}" alt="" srcset=""></div>
-              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide2.png'%}" alt="" srcset=""></div>
-              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide3.png'%}" alt="" srcset=""></div>
-              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide4.png'%}" alt="" srcset=""></div>
-              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide5.png'%}" alt="" srcset=""></div>
-              <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide6.png'%}" alt="" srcset=""></div>
+                <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide1.png'%}"
+                        alt="" srcset=""></div>
+                <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide2.png'%}"
+                        alt="" srcset=""></div>
+                <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide3.png'%}"
+                        alt="" srcset=""></div>
+                <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide4.png'%}"
+                        alt="" srcset=""></div>
+                <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide5.png'%}"
+                        alt="" srcset=""></div>
+                <div class="swiper-slide"> <img class="slide-img" src="{%static 'imgs/home/imgs/slides/slide6.png'%}"
+                        alt="" srcset=""></div>
             </div>
-          </div>
-          
-          
         </div>
+
+
     </div>
+</div>
+
+<div class="contact-form">
+    <form action="POST">
+        {%csrf_token%}
+        <h2>
+            לקבלת הצעת מחיר משתלמת 
+            <div class="mark-strong">&nbsp; ללא &nbsp;</div>
+            עלות 
+            <div class="mark-strong">&nbsp; וללא &nbsp;</div>
+            התחייבות השאירו פרטים ומיד נחזור אליכם
+        </h2>
+        <div class="form-group">
+            <input type="text" name="name" placeholder="שם - חובה" class="form-control" title="" required id="id_name"></div>
+        <div class="form-group">
+            <input type="text" name="phone" placeholder="פאלפון - חובה" class="form-control" title="" required id="id_phone"></div>
+        <div class="form-group">
+            <input type="text" name="email" placeholder="אימייל" class="form-control" title="" id="id_email"></div>
+        <div class="form-group">
+            <textarea name="message" cols="40" rows="2" placeholder="הודעה" class="form-control"title="" id="id_message"></textarea>
+        </div>
+        <input type="hidden" name="url" id="id_url">
+        <input type="hidden" name="sumbited" id="id_sumbited">
+        <input type="hidden" name="formUUID" id="id_formUUID">
+        <div class="form-group">
+            <!--
+                    <button type="submit" class="btn btn-success form-submit">לשיחת יעוץ ללא עלות וללא התחייבות השאירו
+                    פרטים</button>
+                    -->
+            <button type="submit" class="btn btn-success form-submit">לשליחת טופס לחץ כאן</button>
+        </div>
+    </form>
+</div>
 {%endblock%}
 
 {%block extra_body%}
-    <script src="{%static 'js/home.build.min.js'%}" async></script>
+<script src="{%static 'js/home/home_bundle.min.js' %}" defer></script>
 {%endblock%}

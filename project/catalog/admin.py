@@ -17,7 +17,11 @@ class CatalogAlbumAdmin(SortableAdminMixin, admin.ModelAdmin):
     pass
 admin.site.register(CatalogAlbum, CatalogAlbumAdmin)
 
+from imagekit.admin import AdminThumbnail
+
 class CatalogImageAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display =  ('title',)
+    list_display =  ('title','admin_thumbnail')
+    admin_thumbnail = AdminThumbnail(image_field='thumbnail')
+
     pass
 admin.site.register(CatalogImage, CatalogImageAdmin)

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     # libs:
     'adminsortable2',
     'colorfield',
+    'imagekit',
     
     # own:
     'core',

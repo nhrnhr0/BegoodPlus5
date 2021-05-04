@@ -9,7 +9,10 @@
         background-position-x: 100%;
     }
 }
-
+.mark-strong {
+    display: inline;
+    font-weight: bold;
+}
 .btn-success {
     color: #fff;
     background-color: #28a745;
@@ -228,14 +231,63 @@
     
     
     .mySwiper {
-        padding-bottom: 250px;
         .swiper-wrapper {
+            transition-timing-function:linear!important;
             .swiper-slide {
-                border: 3px solid red;
-                .slide-img {
-                    border: 1px solid green;
-                }
+                width: auto; 
+                height: auto;
             }
         }
+    }
+}
+
+
+.contact-form {
+    @include ms-global-gredient();
+    form {
+        h2 {
+            text-align: center;
+            margin-block-start: 0;
+            margin-block-end: 0;
+
+        }
+        .form-group {
+            margin-top: 1rem;
+            .form-control {
+                margin:auto;
+                display: block;
+                width: 80%;
+                height: calc(1.5em + .75rem + 2px);
+                padding: .375rem .75rem;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #495057;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #ced4da;
+                border-radius: .25rem;
+                transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            
+                border-radius: 1rem;
+                background-color: #d1d1d1;
+                margin-bottom: 1px;
+                
+                
+                }
+                
+                .form-submit {
+                    display: block;
+                    margin: 0 auto;
+                    
+                    border: 1px solid transparent;
+                    padding: .375rem .75rem .375rem 0.75rem;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    border-radius: .25rem;
+                    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                }
+        }
+        
     }
 }

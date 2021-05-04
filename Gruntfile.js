@@ -4,57 +4,31 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         concat: {
-                'project/client/build/static/js/commonjs.build.js':['project/client/src/commonjs/**/*.js',],
-            
+                'project/client/build/static/js/base/base_bundle.js':['project/client/src/base/js/venders/jquery-3.6.0.min.js','project/client/src/base/js/venders/swiper-bundle.js' , 'project/client/src/base/js/base.js',],
+                'project/client/build/static/js/home/home_bundle.js':['project/client/src/home/js/home.js',],
+                'project/client/build/static/js/catalog/catalog_bundle.js':['project/client/src/catalog/js/catalog.js',],
         },
-        browserify: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'project/client/',
-                    //report: 'gzip',
-                    src: ['src/**/*.main.js'],
-                    dest: 'project/client/build/static/js/',
-                    ext: '.build.js',
-
-                    rename: function (dest, src) {
-                        var filename = src.replace(/^.*[\\\/]/, '')
-                        res = dest + filename
-                        return res;
-                    }
-                }],
-                options: {
-                    transform: [
-                        ['babelify', {
-                            presets: "es2015"
-                        }]
-                    ],
-                    browserifyOptions: {
-                        debug: false
-                    }
-                }
-            }
-        },
+        
 
 
         uglify: {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: 'project/client/',
+                    cwd: 'project/client/build',
                     //report: 'gzip',
-                    src: ['build/static/js/*.js', '!build/static/js/*.min.js'],
-                    dest: 'project/client/dest/static/js/',
+                    src: ['static/js/**/*.js'],
+                    dest: 'project/client/dest/',
                     compress: false,
                     beautify: true,
-                    //ext: '.min.js',
+                    ext: '.min.js',
 
-                    rename: function (dest, src) {
+                    /*rename: function (dest, src) {
                         var filename = src.replace(/^.*[\\\/]/, '')
                         filename = filename.split('.').slice(0, -1).join('.')
                         res = dest + filename + '.min.js'
                         return res;
-                    }
+                    }*/
                 }],
             }
         },
@@ -149,7 +123,7 @@ module.exports = function (grunt) {
             },
             js: {
               files: 'project/client/src/**/*.js',
-              tasks: [ 'browserify', 'concat', 'uglify',],//
+              tasks: [ 'concat', 'uglify',],//
               options: {
                 interrupt: true,
               },
@@ -175,7 +149,6 @@ module.exports = function (grunt) {
 
 
     });
-    grunt.loadNpmTasks("grunt-browserify");
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
@@ -185,7 +158,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'concat',
-        'browserify:dist',
+        //'browserify:dist',
         'uglify',
         'sass',
         'cssmin',
