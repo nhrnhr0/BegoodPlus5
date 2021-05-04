@@ -26,6 +26,10 @@ class CatalogImage(models.Model):
     description = models.TextField(verbose_name=_("description"))
     
     image = models.ImageField(verbose_name=_("image"), upload_to='CatalogImage')
+    image_69 = ImageSpecField(source='image', processors=[SmartResize(69,69)], format='png',options={'quality': 50})
+    image_248 = ImageSpecField(source='image', processors=[SmartResize(248,248)], format='png',options={'quality': 50})
+    image_376 = ImageSpecField(source='image', processors=[SmartResize(376,376)], format='png',options={'quality': 50})
+    '''
     image_100 = ImageSpecField(source='image', processors=[SmartResize(100,100)],format='png', options={'quality': 0})
     image_200 = ImageSpecField(source='image', processors=[SmartResize(200,200)],format='png', options={'quality': 0})
     image_300 = ImageSpecField(source='image', processors=[SmartResize(300,300)],format='png', options={'quality': 0})
@@ -52,7 +56,7 @@ class CatalogImage(models.Model):
     
     image_69 = ImageSpecField(source='image', processors=[SmartResize(69,69)],format='png', options={'quality': 0})
 
-    
+    '''
     
     
     
