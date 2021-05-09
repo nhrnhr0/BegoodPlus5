@@ -3,8 +3,11 @@ from django.utils.translation import gettext_lazy  as _
 from colorfield.fields import ColorField
 from imagekit.models import ProcessedImageField, ImageSpecField
 from imagekit.processors import Thumbnail, SmartResize, ResizeToFill
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
 # Create your models here.
-
+from PIL import Image
 
 class Color(models.Model):
     name = models.CharField(max_length=30, verbose_name=_('color name'), unique=True)
@@ -21,14 +24,29 @@ class ProductSize(models.Model):
         return self.size + ' (' + self.code + ')'
 
 #a.image.save('temp2.png', File(open(r'C:/Users/ronio/Downloads/trans_images/temp9.png','rb',encoding="utf16")))
+import base64
+
 class CatalogImage(models.Model):
     title = models.CharField(max_length=120, verbose_name=_("title"), unique=False)
     description = models.TextField(verbose_name=_("description"))
     
     image = models.ImageField(verbose_name=_("image"), upload_to='CatalogImage')
+    image_8 = ImageSpecField(source='image', processors=[SmartResize(8,8)], format='png',options={'quality': 50})
     image_69 = ImageSpecField(source='image', processors=[SmartResize(69,69)], format='png',options={'quality': 50})
     image_248 = ImageSpecField(source='image', processors=[SmartResize(248,248)], format='png',options={'quality': 50})
+    image_270 = ImageSpecField(source='image', processors=[SmartResize(270,270)], format='png',options={'quality': 50})
     image_376 = ImageSpecField(source='image', processors=[SmartResize(376,376)], format='png',options={'quality': 50})
+
+    @property
+    def image_url(self): 
+        try:
+            with open(self.image_8.path, 'rb') as img:
+                encoded_string  = base64.b64encode(img.read()).decode("utf-8") 
+                
+                return encoded_string
+                
+        except IOError:
+            return self.image.url
     '''
     image_100 = ImageSpecField(source='image', processors=[SmartResize(100,100)],format='png', options={'quality': 0})
     image_200 = ImageSpecField(source='image', processors=[SmartResize(200,200)],format='png', options={'quality': 0})
@@ -83,6 +101,37 @@ class CatalogImage(models.Model):
     def __str__(self):
         return self.title
 
+    def optimize_image(image, *args, **kwargs):
+        desired_size = 2048
+        im = Image.open(image)
+        old_size = im.size  # old_size[0] is in (width, height) format
+
+        ratio = float(desired_size)/max(old_size)
+        new_size = tuple([int(x*ratio) for x in old_size])
+        # use thumbnail() or resize() method to resize the input image
+
+        # thumbnail is a in-place operation
+
+        # im.thumbnail(new_size, Image.ANTIALIAS)
+
+        im = im.resize(new_size, Image.ANTIALIAS)
+        # create a new image and paste the resized on it
+
+        new_im = Image.new("RGBA", (desired_size, desired_size))
+        new_im.paste(im, ((desired_size-new_size[0])//2,
+                    (desired_size-new_size[1])//2))
+        
+        output = BytesIO()
+        new_im.save(output, format='PNG', quality=75)
+        output.seek(0)
+        return output
+    def save(self, *args, **kwargs):
+        
+        if self.image:
+            output = CatalogImage.optimize_image(self.image)
+            self.image = InMemoryUploadedFile(output, 'ImageField', "%s.png" % self.image.name.split('.')[0], 'image/PNG',
+                                        sys.getsizeof(output), None)
+        super(CatalogImage, self).save(*args,**kwargs)
 
 
 class CatalogAlbum(models.Model):

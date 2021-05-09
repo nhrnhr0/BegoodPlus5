@@ -1,7 +1,7 @@
 console.log('hey catalog.js');
 
 var swipers = [];
-        var swiperDom = $('.swiper-category');
+        var swiperDom = document.querySelectorAll('.swiper-category');//$('.swiper-category');
         for (var i = 0; i < swiperDom.length; i++) {
             swipers.push(new Swiper(swiperDom[i], {
                 // Enable lazy loading
@@ -39,8 +39,8 @@ var swipers = [];
                     clickable: true,
                 },
                 navigation: {
-                    nextEl: `#${swiperDom[i].id} ~ .swiper-button-prev`,
-                    prevEl: `#${swiperDom[i].id} ~ .swiper-button-next`,
+                    nextEl: `.swiper-button-prev`,
+                    prevEl: `.swiper-button-next`,
                 },
             }));
             /*

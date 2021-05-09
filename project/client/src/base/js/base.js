@@ -7,7 +7,7 @@ console.log('base.main.js');
 /*=========================================== menu functionality start ========================================= */
 /*============================================================================================================== */
 
-var menu_btn = $('#menu .collapsible');
+var menu_btn = document.querySelector('#menu .collapsible');
 
 function toggle_menu() {
     menu.classList.toggle("active");
@@ -21,11 +21,11 @@ function set_menu_active(flag) {
     }
 }
 
-menu_btn.on('click', function (e) {
+menu_btn.addEventListener('click', function (e) {
     toggle_menu();
 });
 
-$(window).on('click', function (e) {
+window.addEventListener('click', function (e) {
     // is element other then the menu and what inside is clicked?
     if (e.target != menu_btn && menu_btn[0].contains(e.target) == false) {
         //Hide the menus if visible

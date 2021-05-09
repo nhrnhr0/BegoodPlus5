@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         concat: {
-                'project/client/build/static/js/base/base_bundle.js':['project/client/src/base/js/venders/jquery-3.6.0.min.js','project/client/src/base/js/venders/swiper-bundle.js' , 'project/client/src/base/js/base.js',],
+                'project/client/build/static/js/base/base_bundle.js':['project/client/src/base/js/venders/swiper-bundle.js' , 'project/client/src/base/js/base.js',], //'project/client/src/base/js/venders/jquery-3.6.0.min.js'
                 'project/client/build/static/js/home/home_bundle.js':['project/client/src/home/js/home.js',],
                 'project/client/build/static/js/catalog/catalog_bundle.js':['project/client/src/catalog/js/catalog.js',],
         },

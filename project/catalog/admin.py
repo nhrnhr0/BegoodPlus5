@@ -21,7 +21,7 @@ from imagekit.admin import AdminThumbnail
 
 class CatalogImageAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display =  ('title','admin_thumbnail')
-    admin_thumbnail = AdminThumbnail(image_field='thumbnail')
+    admin_thumbnail = AdminThumbnail(image_field='image_69')
 
     pass
 admin.site.register(CatalogImage, CatalogImageAdmin)

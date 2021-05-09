@@ -13,7 +13,10 @@ body {
     font-family: 'Rubik';
     font-style: normal;
 }
-
+:root {
+    --clr-primery-bg: linear-gradient(to right,#e7ad00,#ebb000,#f0b300,#f4b700,#f9ba00,#f9ba00,#f9ba00,#f9ba00,#f4b700,#f0b300,#ebb000,#e7ad00);
+    --clr-primery-gold: #f0b300;
+}
 
 
 .navbar {
